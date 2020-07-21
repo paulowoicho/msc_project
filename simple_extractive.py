@@ -1,9 +1,13 @@
 """
-Simple extractive model
+Simple extractive model that generates summaries based on sentence weights
+
+https://blog.floydhub.com/gentle-introduction-to-text-summarization-in-machine-learning/
 """
 #libraries
-import nltk
-nltk.download('punkt')
+# import nltk
+# nltk.download('punkt')
+import sys
+from pathlib import Path
 from nltk.corpus import stopwords
 from nltk.stem import PorterStemmer
 from nltk.tokenize import word_tokenize, sent_tokenize
@@ -83,10 +87,11 @@ def run_article_summary(article):
     return article_summary
 
 if __name__ == '__main__':
-    file = open('concat.txt',mode='r')
+    podcast = sys.argv[1]
+    file = open(podcast ,mode='r')
     article_content = file.read()
     file.close()
     summary_results = run_article_summary(article_content)
-    f = open("summary.txt", "a")
+    f = open('summaries/simple_extractive_summaries/'+ Path(podcast).stem + '_summary.txt', "a")
     f.write(summary_results)
     f.close()

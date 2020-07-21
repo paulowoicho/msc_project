@@ -4,17 +4,30 @@ continuous document.
 
 """
 import json
+from pathlib import Path
+import sys
 
-transcript = ''
 
-with open('399kdfMnjw0KYANZU7CQJ0.json') as json_file:
-    data = json.load(json_file)
-    for item in data['results']:
-        try:
-            transcript += ' ' + item['alternatives'][0]['transcript']
-        except:
-            pass #not all item with 'alternatives' key contain a 'transcript' key
+# podcast = sys.argv[1]
 
-f = open("concat.txt", "a")
-f.write(transcript)
-f.close()
+def reformat(podcast):
+    transcript = ''
+    with open(str(podcast)) as json_file:
+        data = json.load(json_file)
+        for item in data['results']:
+            try:
+                transcript += ' ' + item['alternatives'][0]['transcript']
+            except:
+                pass #not all item with 'alternatives' key contain a 'transcript' key
+    
+    f = open('concatenated/'+ Path(podcast).stem + '.txt', "a")
+    f.write(transcript)
+    f.close()
+
+
+rootdir = Path('C:\\Users\\Owoicho\\Desktop\\testes\\spotify-podcasts-2020')
+# Return a list of regular files only, not directories
+file_list = [f for f in rootdir.glob('**/*') if f.is_file()]
+
+for file in file_list:
+    reformat(file)
