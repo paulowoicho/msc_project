@@ -5,6 +5,8 @@ from sumy.parsers.html import HtmlParser
 from sumy.parsers.plaintext import PlaintextParser
 from sumy.nlp.tokenizers import Tokenizer
 from sumy.summarizers.text_rank import TextRankSummarizer as Summarizer
+#{lex_rank: LexRankSummarizer, lsa: LsaSummarizer, text_rank: TextRankSummarizer}
+
 from sumy.nlp.stemmers import Stemmer
 from sumy.utils import get_stop_words
 
