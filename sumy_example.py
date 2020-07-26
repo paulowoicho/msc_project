@@ -1,5 +1,6 @@
 """
-This script handles the TextRank, LexRank and LSA summaries
+- This script handles the TextRank, LexRank and LSA summaries
+- https://github.com/miso-belica/sumy
 """
 
 
