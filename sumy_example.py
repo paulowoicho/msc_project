@@ -1,4 +1,4 @@
-|"""
+"""
 This script handles the TextRank, LexRank and LSA summaries
 """
 
@@ -9,7 +9,9 @@ from __future__ import division, print_function, unicode_literals
 from sumy.parsers.html import HtmlParser
 from sumy.parsers.plaintext import PlaintextParser
 from sumy.nlp.tokenizers import Tokenizer
-from sumy.summarizers.text_rank import TextRankSummarizer as Summarizer
+from sumy.summarizers.text_rank import TextRankSummarizer
+from sumy.summarizers.lex_rank import LexRankSummarizer
+from sumy.summarizers.lsa import LsaSummarizer
 #{lex_rank: LexRankSummarizer, lsa: LsaSummarizer, text_rank: TextRankSummarizer}
 
 from sumy.nlp.stemmers import Stemmer
@@ -20,7 +22,8 @@ LANGUAGE = "english"
 SENTENCES_COUNT = 2
 
 
-def summarize(string):
+def summarize(string, summarizer_type):
+    summarizers = {'lex_rank': LexRankSummarizer, 'lsa': LsaSummarizer, 'text_rank': TextRankSummarizer}
     # url = "https://en.wikipedia.org/wiki/Automatic_summarization"
     # parser = HtmlParser.from_url(url, Tokenizer(LANGUAGE))
     #from text
@@ -29,7 +32,7 @@ def summarize(string):
     #parser = PlaintextParser.from_file("concatenated\\0bTrkuk4ReA2ysnhY2BaYs.txt", Tokenizer(LANGUAGE))
     stemmer = Stemmer(LANGUAGE)
 
-    summarizer = Summarizer(stemmer)
+    summarizer = summarizers[summarizer_type](stemmer)
     summarizer.stop_words = get_stop_words(LANGUAGE)
 
     result = ''
@@ -37,3 +40,5 @@ def summarize(string):
         result += str(sentence) + ' '
 
     return result
+
+
