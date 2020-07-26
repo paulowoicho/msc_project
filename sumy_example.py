@@ -46,6 +46,5 @@ def summarize(string, summarizer_type):
 
     return result
 
-print(summarize('This is a sample sentence. My laptop is on my bed. Does this sentence make sense? My phone is next to me', 'text_rank'))
 
 
