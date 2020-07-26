@@ -6,8 +6,8 @@ This script handles the TextRank, LexRank and LSA summaries
 from __future__ import absolute_import
 from __future__ import division, print_function, unicode_literals
 
-# import nltk
-# nltk.download('punkt')
+import nltk
+nltk.download('punkt')
 
 from sumy.parsers.html import HtmlParser
 from sumy.parsers.plaintext import PlaintextParser
