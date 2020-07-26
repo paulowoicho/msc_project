@@ -6,6 +6,9 @@ This script handles the TextRank, LexRank and LSA summaries
 from __future__ import absolute_import
 from __future__ import division, print_function, unicode_literals
 
+# import nltk
+# nltk.download('punkt')
+
 from sumy.parsers.html import HtmlParser
 from sumy.parsers.plaintext import PlaintextParser
 from sumy.nlp.tokenizers import Tokenizer
@@ -21,9 +24,10 @@ from sumy.utils import get_stop_words
 LANGUAGE = "english"
 SENTENCES_COUNT = 2
 
+summarizers = {'lex_rank': LexRankSummarizer, 'lsa': LsaSummarizer, 'text_rank': TextRankSummarizer}
 
 def summarize(string, summarizer_type):
-    summarizers = {'lex_rank': LexRankSummarizer, 'lsa': LsaSummarizer, 'text_rank': TextRankSummarizer}
+    
     # url = "https://en.wikipedia.org/wiki/Automatic_summarization"
     # parser = HtmlParser.from_url(url, Tokenizer(LANGUAGE))
     #from text
@@ -40,5 +44,7 @@ def summarize(string, summarizer_type):
         result += str(sentence) + ' '
 
     return result
+
+print(summarize('This is a sample sentence. My laptop is on my bed. Does this sentence make sense? My phone is next to me', 'text_rank'))
 
 
