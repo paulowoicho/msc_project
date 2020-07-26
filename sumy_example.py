@@ -9,6 +9,7 @@ from sumy.summarizers.text_rank import TextRankSummarizer as Summarizer
 
 from sumy.nlp.stemmers import Stemmer
 from sumy.utils import get_stop_words
+import sys
 
 
 LANGUAGE = "english"
@@ -18,8 +19,10 @@ SENTENCES_COUNT = 2
 if __name__ == "__main__":
     # url = "https://en.wikipedia.org/wiki/Automatic_summarization"
     # parser = HtmlParser.from_url(url, Tokenizer(LANGUAGE))
+    #from text
+    parser = PlaintextParser.from_string(sys.argv[1], Tokenizer(LANGUAGE))
     # or for plain text files
-    parser = PlaintextParser.from_file("concatenated\\0bTrkuk4ReA2ysnhY2BaYs.txt", Tokenizer(LANGUAGE))
+    #parser = PlaintextParser.from_file("concatenated\\0bTrkuk4ReA2ysnhY2BaYs.txt", Tokenizer(LANGUAGE))
     stemmer = Stemmer(LANGUAGE)
 
     summarizer = Summarizer(stemmer)
