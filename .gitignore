@@ -2,9 +2,14 @@
 /spotify-podcasts-2020
 /summaries
 /.vscode
+/spotify-podcasts-2020-test
+/show-rss-summarization-testset
+/metadata-summarization-testset.tsv
+/bert-extractive-summarizer
 podcast_dataset.db
 dataset.csv
 bert_gpt2_xlnet.py
 extractJSONfiles.py
 first_five.py
 simple_extractive.py
+testset.csv
