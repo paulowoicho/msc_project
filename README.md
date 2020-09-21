@@ -9,11 +9,23 @@ The code for the Keyword Extraction technique used to filter the original datase
 ## Project Contents
 
     /experiments
-This directory contains all the notebooks used to run the experiments for this project
+This directory contains all the notebooks used to run the experiments for this project. It contains code
+used to explore the data, train the abstractive models, generate results, and upload the model to the HuggingFace
+Library.
 
     /summariser-package
 
 This directory contains the code used to make the Python Package that leverages the fine-tuned T5 model
+
+`reformat.py` and `data_extraction.py`
+
+These files contain the code used to extract the json transcripts from the compressed tar file they were 
+distributed in and reformat them for easy use with Pandas.
+
+`podcast-testset.db`
+
+This file is a sample of the end result of extracting and reformating the distributed data.
+
 ## Results
 
 ### Quantitative
